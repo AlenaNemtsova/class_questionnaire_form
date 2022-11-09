@@ -11,36 +11,21 @@ class Cat {
 document.querySelector('form').addEventListener('submit', (evt) => {
     evt.preventDefault();
 
-    const cat2 = new Cat();
-    cat2.petName = document.querySelector('#petName').value;
+    const catNew = new Cat();
+    catNew.petName = document.querySelector('#petName').value;
 
-    cat2.breed = document.querySelector('#breed').value;
+    catNew.breed = document.querySelector('#breed').value;
 
-    cat2.age = document.querySelector('#age').value;
+    catNew.age = document.querySelector('#age').value;
 
-    const foodAll = checkFood();
-    cat2.food = foodAll;
+    catNew.food = checkFood();
 
-    const sexSelected = checkSex();
-    cat2.sex = sexSelected;
+    catNew.sex = checkSex();
 
-    console.log(cat2);
+    console.log(catNew);
 });
 
-
-function checkFood() {
-    const checkboxes = document.querySelectorAll('.food');
-
-    const checkboxesChecked = [];
-    for (item of checkboxes) {
-        if (item.checked) {
-            checkboxesChecked.push(item.value);
-        }
-    }
-    return checkboxesChecked.join();
-}
-
-function checkSex() {
+const checkSex = () => {
     let radioChecked = '';
     const radios = document.querySelectorAll('.sex');
     for (item of radios) {
@@ -50,4 +35,16 @@ function checkSex() {
         }
     }
     return radioChecked;
+}
+
+const checkFood = () => {
+    const checkboxes = document.querySelectorAll('.food');
+
+    const checkboxesChecked = [];
+    for (item of checkboxes) {
+        if (item.checked) {
+            checkboxesChecked.push(item.value);
+        }
+    }
+    return checkboxesChecked.join();
 }
